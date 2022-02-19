@@ -15,7 +15,7 @@ env:
   GITHUB_RELEASE_TAG: ${{ github.event.release.tag_name }}
   IMAGE: gateway
   REGISTRY_HOSTNAME: us.gcr.io
-  REVERSE_PROXY_TARGET: ${{ secrets.REVERSE_PROXY_TARGET }}
+  REVERSE_PROXY_API_TARGET: ${{ secrets.REVERSE_PROXY_API_TARGET }}
 
 jobs:
   setup-build-publish-deploy:
@@ -46,7 +46,7 @@ jobs:
             -t "$REGISTRY_HOSTNAME/$GOOGLE_PROJECT/$IMAGE:latest" \
             --build-arg GITHUB_SHA="$GITHUB_SHA" \
             --build-arg GITHUB_REF="$GITHUB_REF" \
-            --build-arg REVERSE_PROXY_TARGET="$REVERSE_PROXY_TARGET" .
+            --build-arg REVERSE_PROXY_API_TARGET="$REVERSE_PROXY_API_TARGET" .
 
       # Push the Docker image to Google Container Registry
       - name: Publish

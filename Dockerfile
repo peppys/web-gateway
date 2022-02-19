@@ -1,7 +1,8 @@
 FROM nginx:latest
 
-ARG REVERSE_PROXY_TARGET=replace-me;
+ARG REVERSE_PROXY_API_TARGET=replace-me;
 
+ADD static /usr/share/nginx/html
 ADD nginx.conf.template /opt/nginx.conf.template
 
 RUN envsubst < /opt/nginx.conf.template > /etc/nginx/nginx.conf

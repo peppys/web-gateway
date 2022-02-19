@@ -5,7 +5,7 @@ services:
     build:
         context: ./
         args:
-          REVERSE_PROXY_TARGET: ${REVERSE_PROXY_TARGET}
+          REVERSE_PROXY_API_TARGET: ${REVERSE_PROXY_API_TARGET}
     ports:
       - '80:80'
       - '443:80'
