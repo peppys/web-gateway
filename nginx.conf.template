@@ -1,0 +1,18 @@
+worker_processes        1;
+events {
+    worker_connections  512;
+}
+
+http {
+  include    mime.types;
+
+  server {
+    server_name _;
+    absolute_redirect off;
+
+     location / {
+      proxy_ssl_server_name on;
+      proxy_pass ${REVERSE_PROXY_TARGET};
+     }
+  }
+}

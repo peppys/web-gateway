@@ -1,0 +1,11 @@
+version: '2.1'
+services:
+  gateway:
+    env_file: .env
+    build:
+        context: ./
+        args:
+          REVERSE_PROXY_TARGET: ${REVERSE_PROXY_TARGET}
+    ports:
+      - '80:80'
+      - '443:80'
