@@ -11,9 +11,13 @@ http {
     server_name _;
     absolute_redirect off;
 
-     location /api {
-      proxy_ssl_server_name on;
-      proxy_pass ${REVERSE_PROXY_API_TARGET};
-     }
+    location /favicon.ico {
+        root /usr/share/nginx/html/img;
+    }
+
+    location /api/ {
+        proxy_ssl_server_name on;
+        proxy_pass ${REVERSE_PROXY_API_TARGET};
+    }
   }
 }
