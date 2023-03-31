@@ -17,7 +17,12 @@ http {
 
     location /api/ {
         proxy_ssl_server_name on;
-        proxy_pass ${REVERSE_PROXY_API_TARGET};
+        proxy_pass ${REVERSE_PROXY_API_TARGET}/api/;
+    }
+
+    location /grafana/ {
+        proxy_ssl_server_name on;
+        proxy_pass ${REVERSE_PROXY_API_TARGET}/grafana/;
     }
   }
 }
