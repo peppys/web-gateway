@@ -6,6 +6,7 @@ services:
         context: ./
         args:
           REVERSE_PROXY_API_TARGET: ${REVERSE_PROXY_API_TARGET}
+          DNS_RESOLVER: ${DNS_RESOLVER}
     ports:
       - '80:80'
       - '443:80'
