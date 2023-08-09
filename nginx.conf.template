@@ -10,6 +10,8 @@ http {
   server {
     server_name _;
     absolute_redirect off;
+    resolver ${DNS_RESOLVER} valid=15s;
+    set $target ${REVERSE_PROXY_API_TARGET};
 
     location /favicon.ico {
         root /usr/share/nginx/html/img;
@@ -17,12 +19,12 @@ http {
 
     location /api/ {
         proxy_ssl_server_name on;
-        proxy_pass ${REVERSE_PROXY_API_TARGET}/api/;
+        proxy_pass $target/api/;
     }
 
     location /grafana/ {
         proxy_ssl_server_name on;
-        proxy_pass ${REVERSE_PROXY_API_TARGET}/grafana/;
+        proxy_pass $target/grafana/;
     }
   }
 }
